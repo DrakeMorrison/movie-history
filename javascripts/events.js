@@ -1,20 +1,18 @@
 const myLinks = function (e) {
-  $('#auth-btn').on('click', function () {
-    $('#authScreen').show();
-    $('#myMovies').hide();
-    $('#search').hide();
-  });
-
-  $('#myMovies-btn').on('click', function () {
-    $('#myMovies').show();
-    $('#authScreen').hide();
-    $('#search').hide();
-  });
-
-  $('#search-btn').on('click', function () {
-    $('#search').show();
-    $('#authScreen').hide();
-    $('#myMovies').hide();
+  $(document).on('click', function (e) {
+    if (e.target.id === 'auth-btn') {
+      $('#authScreen').show();
+      $('#myMovies').hide();
+      $('#search').hide();
+    } else if (e.target.id === 'myMovies-btn') {
+      $('#myMovies').show();
+      $('#authScreen').hide();
+      $('#search').hide();
+    } else if (e.target.id === 'search-btn') {
+      $('#search').show();
+      $('#authScreen').hide();
+      $('#myMovies').hide();
+    }
   });
 };
 
