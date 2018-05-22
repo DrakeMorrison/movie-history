@@ -1,1 +1,4 @@
-console.error('it works');
+const events = require('./events.js');
+
+// retrieveKeys();
+events.myLinks();
