@@ -1,7 +1,9 @@
 const domString = function (movieArray) {
   let str = '';
   $(movieArray).each(function (i, movie) {
-    str += `<div class='row'>`;
+    if (i === 0) {
+      str += `<div class='row'>`;
+    }
     str +=   `<div class='col-sm-6 col-md-4'>`;
     str +=    `<div class='thumbnail'>`;
     str +=      `<img src='...' alt='...'>`;
@@ -12,9 +14,11 @@ const domString = function (movieArray) {
     str +=      `</div>`;
     str +=    `</div>`;
     str +=   `</div>`;
-    str += `</div>`;// ends row
+    if ((i + 1) % 3 === 0) {
+      str += `</div>`;
+      str += `<div class='row'>`;
+    }
   });
-  // if () {} every 3rd movie create a new row
   printToDom(str, '#movies');
 };
 
