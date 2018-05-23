@@ -24,8 +24,12 @@ function setKey (str) {
   tmdbKey = str;
 }
 
-function showResults (array) {
-  dom.domString(array);
+function showResults (searchText) {
+  searchTMDB(searchText)
+    .then(function (result) {
+      dom.domString(result.results);
+    })
+    .catch(console.error.bind(console));
 }
 
 module.exports = {

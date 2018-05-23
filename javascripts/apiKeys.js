@@ -2,9 +2,9 @@ const tmdb = require('./tmdb.js');
 
 function apiKeys () {
   return new Promise((resolve, reject) => {
-    $.get('/db/apiKeys.json')
+    $.get('./db/apiKeys.json')
       .done((data) => {
-        resolve(data);
+        resolve(data.apiKeys);
       })
       .fail((err) => {
         reject(`ERROR:`, err);
@@ -14,7 +14,7 @@ function apiKeys () {
 
 function retrieveKeys () {
   apiKeys().then(function (data) {
-    tmdb.setKey(data);
+    tmdb.setKey(data.tmdb.apiKey);
   }).catch(console.error.bind(console));
 }
 
