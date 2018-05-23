@@ -4,7 +4,7 @@ let tmdbKey = '';
 
 function searchTMDB (searchText) { // needs work
   return new Promise((resolve, reject) => {
-    $.get(`https://api.themoviedb.org/3/search/movie?api_key=${tmdbKey}&language=en-US&page=1&include_adult=false`)
+    $.get(`https://api.themoviedb.org/3/search/movie?api_key=${tmdbKey}&language=en-US&include_adult=false&query=${searchText}`)
       .done((data) => {
         resolve(data);
       })
@@ -15,7 +15,9 @@ function searchTMDB (searchText) { // needs work
 }
 
 function searchMovies (searchText) { // needs work
-  searchTMDB(searchText).then();
+  searchTMDB(searchText).then(function (data) {
+    console.error(data);
+  });
 }
 
 function setKey (str) {

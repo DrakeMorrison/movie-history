@@ -23,9 +23,8 @@ const apiKeys = require('./apiKeys.js');
 (function startApp () {
   $('#myMovies').hide();
   $('#authScreen').hide();
-  // retrieveKeys();
-  dom.domString([singleMovie, singleMovie, singleMovie, singleMovie,]);
-  events.myLinks();
   apiKeys.retrieveKeys();
   events.pressEnter();
+  events.myLinks();
+  dom.domString([singleMovie, singleMovie, singleMovie, singleMovie,]);
 })();
