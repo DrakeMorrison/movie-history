@@ -8,8 +8,8 @@ const domString = function (movieArray) {
     str +=    `<div class='thumbnail'>`;
     str +=      `<img src='...' alt='...'>`;
     str +=      `<div class='caption'>`;
-    str +=        `<h3>Thumbnail label</h3>`;
-    str +=        `<p>...</p>`;
+    str +=        `<h3>${movie.original_title}</h3>`;
+    str +=        `<p>${movie.overview}</p>`;
     str +=        `<p><a href='#' class='btn btn-primary' role='button'>Review</a> <a href='#' class='btn btn-default' role='button'>Wishlist</a></p>`;
     str +=      `</div>`;
     str +=    `</div>`;
