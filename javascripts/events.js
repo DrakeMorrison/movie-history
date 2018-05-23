@@ -1,3 +1,5 @@
+const tmdb = require('./tmdb.js');
+
 const myLinks = function (e) {
   $(document).on('click', function (e) {
     if (e.target.id === 'auth-btn') {
@@ -16,6 +18,16 @@ const myLinks = function (e) {
   });
 };
 
+function pressEnter () {
+  $(document).on('keydown', function (e) {
+    if (e.keyCode === 13) {
+      const input = encodeURI($('#search-bar-input').val());
+      tmdb.searchMovies(input);
+    }
+  });
+}
+
 module.exports = {
   myLinks,
+  pressEnter,
 };

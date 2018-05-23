@@ -10,7 +10,7 @@ const domString = function (movieArray) {
     str +=      `<div class='caption'>`;
     str +=        `<h3>Thumbnail label</h3>`;
     str +=        `<p>...</p>`;
-    str +=        `<p><a href='#' class='btn btn-primary' role='button'>Button</a> <a href='#' class='btn btn-default' role='button'>Button</a></p>`;
+    str +=        `<p><a href='#' class='btn btn-primary' role='button'>Review</a> <a href='#' class='btn btn-default' role='button'>Wishlist</a></p>`;
     str +=      `</div>`;
     str +=    `</div>`;
     str +=   `</div>`;

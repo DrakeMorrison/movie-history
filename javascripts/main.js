@@ -17,6 +17,7 @@ const singleMovie = {
 
 const events = require('./events.js');
 const dom = require('./dom.js');
+const apiKeys = require('./apiKeys.js');
 
 (function startApp () {
   $('#myMovies').hide();
@@ -24,4 +25,6 @@ const dom = require('./dom.js');
   // retrieveKeys();
   dom.domString([singleMovie, singleMovie, singleMovie, singleMovie,]);
   events.myLinks();
+  apiKeys.retrieveKeys();
+  events.pressEnter();
 })();
