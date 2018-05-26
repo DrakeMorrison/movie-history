@@ -15,6 +15,7 @@ function apiKeys () {
 function retrieveKeys () {
   apiKeys().then(function (data) {
     tmdb.setKey(data.tmdb.apiKey);
+    firebase.initializeApp(data.firebase);
   }).catch(console.error.bind(console));
 }
 
