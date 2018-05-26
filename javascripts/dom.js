@@ -1,7 +1,7 @@
 const domString = function (movieArray, config) {
   let str = '';
   $(movieArray).each(function (i, movie) {
-    if (i === 0) {
+    if (i % 3 === 0) {
       str += `<div class='row'>`;
     }
     str +=   `<div class='col-sm-6 col-md-4'>`;
@@ -14,9 +14,8 @@ const domString = function (movieArray, config) {
     str +=      `</div>`;
     str +=    `</div>`;
     str +=   `</div>`;
-    if ((i + 1) % 3 === 0) {
+    if (i % 3 === 2) {
       str += `</div>`;
-      str += `<div class='row'>`;
     }
   });
   printToDom(str, '#movies');
