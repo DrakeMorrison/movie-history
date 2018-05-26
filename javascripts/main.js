@@ -1,3 +1,4 @@
+'use strict';
 /* eslint camelcase: 0 */
 // const singleMovie = {
 //   adult: false,

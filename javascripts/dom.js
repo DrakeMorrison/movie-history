@@ -1,3 +1,4 @@
+'use strict';
 const domString = function (movieArray, config) {
   let str = '';
   $(movieArray).each(function (i, movie) {
