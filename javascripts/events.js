@@ -22,7 +22,7 @@ function pressEnter () {
   $(document).on('keydown', function (e) {
     if (e.keyCode === 13) {
       const input = encodeURI($('#search-bar-input').val());
-      tmdb.searchMovies(input);
+      tmdb.showResults(input);
     }
   });
 }
