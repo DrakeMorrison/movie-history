@@ -1,3 +1,4 @@
+'use strict';
 const tmdb = require('./tmdb.js');
 
 const myLinks = function (e) {
