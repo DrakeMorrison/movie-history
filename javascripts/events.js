@@ -1,5 +1,6 @@
 'use strict';
 const tmdb = require('./tmdb.js');
+const firebaseApi = require('./firebaseApi.js');
 
 const myLinks = function (e) {
   $(document).on('click', function (e) {
@@ -28,7 +29,27 @@ function pressEnter () {
   });
 }
 
+function saveMovieToWishListEvent () {
+  $(document).on('click', '.wish-btn', function (e) {
+    const movieToAddCard = $(e.target).closest('.movie');
+    const movieToAdd = {
+      'title': movieToAddCard.find('.movie-title').text(),
+      'overview': movieToAddCard.find('.movie-overview').text(),
+      'poster_path': movieToAddCard.find('.movie-poster_path').data('poster'),
+      'rating': 0,
+      'isWatched': false,
+    };
+    firebaseApi.saveMovieToWishList(movieToAdd)
+      .then(function () {
+        movieToAddCard.remove();
+      }).catch(function (error) {
+        console.error('error in saving movie', error);
+      });
+  });
+}
+
 module.exports = {
   myLinks,
   pressEnter,
+  saveMovieToWishListEvent,
 };

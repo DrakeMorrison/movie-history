@@ -6,12 +6,12 @@ const domString = function (movieArray, config) {
       str += `<div class='row'>`;
     }
     str +=   `<div class='col-sm-6 col-md-4'>`;
-    str +=    `<div class='thumbnail'>`;
-    str +=      `<img src="${config.base_url}/w342/${movieArray[i].poster_path}" alt='...'>`;
+    str +=    `<div class='thumbnail movie'>`;
+    str +=      `<img class='movie-poster_path' src="${config.base_url}/w342/${movieArray[i].poster_path}" alt='...' data-poster='${movieArray[i].poster_path}'>`;
     str +=      `<div class='caption'>`;
-    str +=        `<h3>${movie.original_title}</h3>`;
-    str +=        `<p>${movie.overview}</p>`;
-    str +=        `<p><a href='#' class='btn btn-primary' role='button'>Review</a> <a href='#' class='btn btn-default' role='button'>Wishlist</a></p>`;
+    str +=        `<h3 class='movie-title'>${movie.original_title}</h3>`;
+    str +=        `<p class='movie-overview'>${movie.overview}</p>`;
+    str +=        `<p><a href='#' class='btn btn-primary' role='button'>Review</a> <a class='btn btn-default wish-btn' role='button'>Wishlist</a></p>`;
     str +=      `</div>`;
     str +=    `</div>`;
     str +=   `</div>`;
