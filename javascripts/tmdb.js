@@ -3,7 +3,7 @@ const dom = require('./dom.js');
 
 let tmdbKey = '';
 
-let imgConfig = '';
+let imgConfig = {};
 
 function searchTMDB (searchText) { // needs work
   return new Promise((resolve, reject) => {
@@ -31,7 +31,7 @@ function setKey (str) {
 function showResults (searchText) {
   searchTMDB(searchText)
     .then(function (result) {
-      dom.domString(result.results, imgConfig);
+      dom.domString(result.results, imgConfig, '#movies');
     })
     .catch(console.error.bind(console));
 }
@@ -48,6 +48,8 @@ function tmdbConfiguration () {
   });
 }
 
+const getImageConfig = () => imgConfig;
+
 function getConfig () {
   tmdbConfiguration().then(function (results) {
     imgConfig = results.images;
@@ -58,5 +60,6 @@ function getConfig () {
 module.exports = {
   setKey,
   showResults,
+  getImageConfig,
   // searchMovies,
 };

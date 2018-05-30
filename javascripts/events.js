@@ -1,7 +1,7 @@
 'use strict';
 const tmdb = require('./tmdb.js');
 const firebaseApi = require('./firebaseApi.js');
-// const dom = require('./dom.js');
+const dom = require('./dom.js');
 
 const myLinks = function (e) {
   $(document).on('click', function (e) {
@@ -52,9 +52,7 @@ function saveMovieToWishListEvent () {
 
 function getAllMoviesEvent () {
   firebaseApi.getAllMovies().then(function (results) {
-    results.forEach(movie => {
-      $('#savedMovies').append(movie.title);
-    });
+    dom.domString(results, tmdb.getImageConfig(), '#savedMovies');
   }).catch(console.error.bind(console));
 }
 
