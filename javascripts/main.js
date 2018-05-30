@@ -26,5 +26,6 @@ const apiKeys = require('./apiKeys.js');
   apiKeys.retrieveKeys();
   events.pressEnter();
   events.myLinks();
+  events.saveMovieToWishListEvent();
   // dom.domString([singleMovie, singleMovie, singleMovie, singleMovie,]);
 })();
