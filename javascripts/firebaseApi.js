@@ -44,8 +44,24 @@ function getAllMovies () {
   });
 }
 
+function deleteMovie (movieId) {
+  return new Promise(function (resolve, reject) {
+    $.ajax({
+      method: 'DELETE',
+      url: `${firebaseConfig.databaseURL}/movies/${movieId}.json`,
+    })
+      .done(function () {
+        resolve();
+      })
+      .fail(function (error) {
+        reject(error);
+      });
+  });
+}
+
 module.exports = {
   saveMovieToWishList,
   setConfig,
   getAllMovies,
+  deleteMovie,
 };

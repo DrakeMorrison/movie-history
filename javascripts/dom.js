@@ -6,9 +6,9 @@ const domString = function (movieArray, config, whereToPrint, myCollectionMode =
       str += `<div class='row'>`;
     }
     str +=   `<div class='col-sm-6 col-md-4'>`;
-    str +=    `<div class='thumbnail movie'>`;
+    str +=    `<div class='thumbnail movie' data-firebase-id='${movie.id}'>`;
     if (myCollectionMode) {
-      str += `<button class='btn delete'>X</button>`;
+      str += `<button class='btn delete-btn'>X</button>`;
     }
     str +=      `<img class='movie-poster_path' src="${config.base_url}/w342/${movie.poster_path}" alt='...' data-poster='${movieArray[i].poster_path}'>`;
     str +=      `<div class='caption'>`;

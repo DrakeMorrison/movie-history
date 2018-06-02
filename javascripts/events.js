@@ -11,6 +11,7 @@ const myLinks = function (e) {
       $('#search').hide();
     } else if (e.target.id === 'myMovies-btn') {
       getAllMoviesEvent();
+      deleteMovieEvent();
       $('#myMovies').show();
       $('#authScreen').hide();
       $('#search').hide();
@@ -54,6 +55,15 @@ function getAllMoviesEvent () {
   firebaseApi.getAllMovies().then(function (results) {
     dom.domString(results, tmdb.getImageConfig(), '#savedMovies', true);
   }).catch(console.error.bind(console));
+}
+
+function deleteMovieEvent () {
+  $(document).on('click', '.delete-btn', function (e) {
+    const fbMovieId = $(e.target).closest('.movie').data('firebaseId');
+    firebaseApi.deleteMovie(fbMovieId).then(function () {
+      getAllMoviesEvent();
+    });
+  });
 }
 
 module.exports = {
