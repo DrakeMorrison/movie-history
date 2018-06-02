@@ -12,6 +12,7 @@ const myLinks = function (e) {
     } else if (e.target.id === 'myMovies-btn') {
       getAllMoviesEvent();
       deleteMovieEvent();
+      updateMovieEvent();
       $('#myMovies').show();
       $('#authScreen').hide();
       $('#search').hide();
@@ -63,6 +64,25 @@ function deleteMovieEvent () {
     firebaseApi.deleteMovie(fbMovieId).then(function () {
       getAllMoviesEvent();
     }).catch(console.error.bind(console));
+  });
+}
+
+function updateMovieEvent () {
+  $(document).on('click', '.updateMovieToWatched', function (e) {
+    const movieToUpdateCard = $(e.target).closest('.movie');
+    const movieToUpdateId = $(movieToUpdateCard).data('firebaseId');
+    const updatedMovie = {
+      'title': movieToUpdateCard.find('.movie-title').text(),
+      'overview': movieToUpdateCard.find('.movie-overview').text(),
+      'poster_path': movieToUpdateCard.find('.movie-poster_path').data('poster'),
+      'rating': 0,
+      'isWatched': true,
+    };
+    firebaseApi.updateMovie(updatedMovie, movieToUpdateId)
+      .then(function () {
+        getAllMoviesEvent();
+      })
+      .catch(console.error.bind(console));
   });
 }
 
