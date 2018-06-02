@@ -59,9 +59,26 @@ function deleteMovie (movieId) {
   });
 }
 
+function updateMovie (modifiedMovie, movieId) {
+  return new Promise(function (resolve, reject) {
+    $.ajax({
+      method: 'PUT',
+      url: `${firebaseConfig.databaseURL}/movies/${movieId}.json`,
+      data: JSON.stringify(modifiedMovie),
+    })
+      .done(function (modifiedMovie) {
+        resolve(modifiedMovie);
+      })
+      .fail(function () {
+        reject(modifiedMovie);
+      });
+  });
+}
+
 module.exports = {
   saveMovieToWishList,
   setConfig,
   getAllMovies,
   deleteMovie,
+  updateMovie,
 };
