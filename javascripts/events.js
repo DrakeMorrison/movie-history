@@ -86,8 +86,38 @@ function updateMovieEvent () {
   });
 }
 
+function filterEvents () {
+  $('#filterButtons').on('click', function (e) {
+    const target = e.target.id;
+    switch (target) {
+      case 'wishlist':
+        showWishlistMovies();
+        break;
+      case 'watched':
+        showWatchedMovies();
+        break;
+      case 'all':
+        getAllMoviesEvent();
+        break;
+    }
+  });
+}
+
+function showWatchedMovies () {
+  firebaseApi.getWatchedMovies().then(function (results) {
+    dom.domString(results, tmdb.getImageConfig(), '#savedMovies', true);
+  }).catch(console.error.bind(console));
+}
+
+function showWishlistMovies () {
+  firebaseApi.getWishlistMovies().then(function (results) {
+    dom.domString(results, tmdb.getImageConfig(), '#savedMovies', true);
+  }).catch(console.error.bind(console));
+}
+
 module.exports = {
   myLinks,
   pressEnter,
   saveMovieToWishListEvent,
+  filterEvents,
 };
