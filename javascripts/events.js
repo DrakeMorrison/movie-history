@@ -91,11 +91,10 @@ function filterEvents () {
     const target = e.target.id;
     switch (target) {
       case 'wishlist':
-        // get wishlist movies
+        showWishlistMovies();
         break;
       case 'watched':
         showWatchedMovies();
-
         break;
       case 'all':
         getAllMoviesEvent();
@@ -106,6 +105,12 @@ function filterEvents () {
 
 function showWatchedMovies () {
   firebaseApi.getWatchedMovies().then(function (results) {
+    dom.domString(results, tmdb.getImageConfig(), '#savedMovies', true);
+  }).catch(console.error.bind(console));
+}
+
+function showWishlistMovies () {
+  firebaseApi.getWishlistMovies().then(function (results) {
     dom.domString(results, tmdb.getImageConfig(), '#savedMovies', true);
   }).catch(console.error.bind(console));
 }

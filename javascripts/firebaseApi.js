@@ -97,6 +97,28 @@ function getWatchedMovies () {
   });
 }
 
+function getWishlistMovies () {
+  const allMoviesArray = [];
+  return new Promise(function (resolve, reject) {
+    $.ajax({
+      method: 'GET',
+      url: `${firebaseConfig.databaseURL}/movies.json?orderBy="isWatched"&equalTo=false`,
+    })
+      .done(function (allMoviesObject) {
+        if (allMoviesObject !== null) {
+          Object.keys(allMoviesObject).forEach(function (fbKey) {
+            allMoviesObject[fbKey].id = fbKey;
+            allMoviesArray.push(allMoviesObject[fbKey]);
+          });
+        }
+        resolve(allMoviesArray);
+      })
+      .fail(function (error) {
+        reject(error);
+      });
+  });
+}
+
 module.exports = {
   saveMovieToWishList,
   setConfig,
@@ -104,4 +126,5 @@ module.exports = {
   deleteMovie,
   updateMovie,
   getWatchedMovies,
+  getWishlistMovies,
 };
