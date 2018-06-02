@@ -10,4 +10,5 @@ const apiKeys = require('./apiKeys.js');
   events.pressEnter();
   events.myLinks();
   events.saveMovieToWishListEvent();
+  events.filterEvents();
 })();
