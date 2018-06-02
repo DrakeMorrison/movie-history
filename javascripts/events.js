@@ -62,7 +62,7 @@ function deleteMovieEvent () {
     const fbMovieId = $(e.target).closest('.movie').data('firebaseId');
     firebaseApi.deleteMovie(fbMovieId).then(function () {
       getAllMoviesEvent();
-    });
+    }).catch(console.error.bind(console));
   });
 }
 
