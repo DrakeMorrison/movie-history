@@ -1,6 +1,7 @@
 'use strict';
 const tmdb = require('./tmdb.js');
 const firebaseApi = require('./firebaseApi.js');
+const dom = require('./dom.js');
 
 const myLinks = function (e) {
   $(document).on('click', function (e) {
@@ -9,6 +10,7 @@ const myLinks = function (e) {
       $('#myMovies').hide();
       $('#search').hide();
     } else if (e.target.id === 'myMovies-btn') {
+      getAllMoviesEvent();
       $('#myMovies').show();
       $('#authScreen').hide();
       $('#search').hide();
@@ -46,6 +48,12 @@ function saveMovieToWishListEvent () {
         console.error('error in saving movie', error);
       });
   });
+}
+
+function getAllMoviesEvent () {
+  firebaseApi.getAllMovies().then(function (results) {
+    dom.domString(results, tmdb.getImageConfig(), '#savedMovies');
+  }).catch(console.error.bind(console));
 }
 
 module.exports = {
