@@ -52,7 +52,7 @@ function saveMovieToWishListEvent () {
 
 function getAllMoviesEvent () {
   firebaseApi.getAllMovies().then(function (results) {
-    dom.domString(results, tmdb.getImageConfig(), '#savedMovies');
+    dom.domString(results, tmdb.getImageConfig(), '#savedMovies', true);
   }).catch(console.error.bind(console));
 }
 
