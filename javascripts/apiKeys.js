@@ -1,6 +1,7 @@
 'use strict';
 const tmdb = require('./tmdb.js');
 const firebaseApi = require('./firebaseApi.js');
+const {checkLoginStatus,} = require('./auth.js');
 
 function apiKeys () {
   return new Promise((resolve, reject) => {
@@ -19,6 +20,7 @@ function retrieveKeys () {
     tmdb.setKey(data.tmdb.apiKey);
     firebaseApi.setConfig(data.firebase);
     firebase.initializeApp(data.firebase);
+    checkLoginStatus();
   }).catch(console.error.bind(console));
 }
 

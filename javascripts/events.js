@@ -121,14 +121,6 @@ function authEvents () {
     const email = $('#inputEmail').val();
     const pass = $('#inputPassword').val();
     firebase.auth().signInWithEmailAndPassword(email, pass)
-      .then(function (user) {
-        getAllMoviesEvent();
-        deleteMovieEvent();
-        updateMovieEvent();
-        $('#myMovies').show();
-        $('#authScreen').hide();
-        $('#search').hide();
-      })
       .catch(console.error.bind(console));
   });
 
@@ -142,6 +134,15 @@ function authEvents () {
     $('#registration-form').addClass('hide');
   });
 
+  $('#logout').click(function () {
+    firebase.auth().signOut()
+      .then(function () {
+        $('#authScreen').show();
+        $('#myMovies').hide();
+        $('#search').hide();
+      })
+      .catch(console.error.bind(console));
+  });
 }
 
 module.exports = {
@@ -150,4 +151,7 @@ module.exports = {
   saveMovieToWishListEvent,
   filterEvents,
   authEvents,
+  deleteMovieEvent,
+  updateMovieEvent,
+  getAllMoviesEvent,
 };
