@@ -121,7 +121,11 @@ function authEvents () {
     const email = $('#inputEmail').val();
     const pass = $('#inputPassword').val();
     firebase.auth().signInWithEmailAndPassword(email, pass)
-      .catch(console.error.bind(console));
+      .catch(function (error) {
+        $('#signin-error-msg').text(error.message);
+        $('#signin-error').removeClass('hide');
+        console.error.bind(console);
+      });
   });
 
   $('#register-link').click(function () {
@@ -148,7 +152,11 @@ function authEvents () {
     const email = $('#registerEmail').val();
     const pass = $('#registerPassword').val();
     firebase.auth().createUserWithEmailAndPassword(email, pass)
-      .catch(console.error.bind(console));
+      .catch(function (error) {
+        $('#register-error-msg').text(error.message);
+        $('#register-error').removeClass('hide');
+        console.error.bind(console);
+      });
   });
 }
 
