@@ -1,11 +1,13 @@
 'use strict';
 
 const {getAllMoviesEvent, deleteMovieEvent, updateMovieEvent,} = require('./events.js');
+const {setUID,} = require('./firebaseApi.js');
 
 function checkLoginStatus () {
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       // User is signed in.
+      setUID(user.uid);
       getAllMoviesEvent();
       deleteMovieEvent();
       updateMovieEvent();
